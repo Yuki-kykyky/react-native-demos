@@ -7,8 +7,13 @@ import { OperationSection } from "@/components/todo/OperationSection";
 
 export default function RootLayout() {
   const [isVisible, setIsVisible] = useState(false);
+  const mockGoalList = [
+    {id: '1', value: 'Learn React Native'},
+    {id: '2', value: 'Learn TypeScript'},
+    {id: '3', value: 'Learn Expo'},
+  ];
   const [goalList, setGoalList] = useState<
-    { id: string; value: string}[]>([]);
+    { id: string; value: string }[]>(mockGoalList);
   const handleAddGoal = (goal: string) => {
     setGoalList([...goalList, {id: Math.random().toString(), value: goal}]);
   };

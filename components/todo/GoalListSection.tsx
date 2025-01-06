@@ -1,23 +1,24 @@
 import React from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export const GoalListSection = (
 	{goalList, handleRemoveGoal}: { goalList: { id: string, value: string }[], handleRemoveGoal: (id: string) => void }
 ) => {
 	return (
 		<View style={styles.goalList}>
+			<ScrollView>
 			{goalList.map((goal, index) => {
 				return (
-					<View key={index} style={styles.goalListItem}>
-						<Pressable onPress={() => {
-							console.log('GoalListSection: Delete', goal.id);
+					<Pressable key={index} onPress={() => {
 							handleRemoveGoal(goal.id);
 						}}>
+						<View style={styles.goalListItem}>
 							<Text style={{color: '#081e79'}}>{goal.value}</Text>
+						</View>
 						</Pressable>
-					</View>
 				);
 			})}
+			</ScrollView>
 		</View>
 	);
 };
