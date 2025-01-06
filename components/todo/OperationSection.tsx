@@ -1,12 +1,12 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 export const OperationSection = (
-	{handleAddGoal}: { handleAddGoal: () => void }) => {
+	{handleOpen}: { handleOpen: () => void }) => {
 	return (<View
 		style={styles.operationSection}>
 		<Pressable
 			style={styles.addButton}
-			onPress={handleAddGoal}>
+			onPress={handleOpen}>
 			<Text style={{color: '#fff'}}>Add Goal</Text>
 		</Pressable>
 	</View>)

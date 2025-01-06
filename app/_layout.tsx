@@ -7,19 +7,23 @@ import { OperationSection } from "@/components/todo/OperationSection";
 
 export default function RootLayout() {
   const [isVisible, setIsVisible] = useState(false);
-  const [goalList, setGoalList] = useState<string[]>([]);
-  const handleGoalList = (goal: string) => {
-    setGoalList([...goalList, goal]);
+  const [goalList, setGoalList] = useState<
+    { id: string; value: string}[]>([]);
+  const handleAddGoal = (goal: string) => {
+    setGoalList([...goalList, {id: Math.random().toString(), value: goal}]);
   };
-  const handleAddGoal = () => setIsVisible(true);
+  const handleOpen = () => setIsVisible(true);
+  const handleRemoveGoal = (id: string) => {
+    setGoalList(goalList.filter((goal) => goal.id !== id));
+  };
   return (
     <View style={styles.componentLayout}>
       <GoalModal
         isVisible={isVisible}
         setIsVisible={setIsVisible}
-        handleGoalList={handleGoalList}/>
-      <OperationSection handleAddGoal={handleAddGoal}/>
-      <GoalListSection goalList={goalList}/>
+        handleAddGoal={handleAddGoal}/>
+      <OperationSection handleOpen={handleOpen}/>
+      <GoalListSection goalList={goalList} handleRemoveGoal={handleRemoveGoal}/>
     </View>
   );
 }

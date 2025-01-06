@@ -4,10 +4,10 @@ import { useState } from "react";
 export const GoalModal = ({
 	isVisible,
 	setIsVisible,
-	handleGoalList,
+	handleAddGoal,
 }: {
 	isVisible: boolean,
-	handleGoalList: (goal: string) => void,
+	handleAddGoal: (goal: string) => void,
 	setIsVisible: (value: (((prevState: boolean) => boolean) | boolean)) => void,
 }
 ) => {
@@ -39,7 +39,7 @@ export const GoalModal = ({
 						style={{...styles.ModalButton, backgroundColor: '#fff'}}
 						onPress={() => {
 							handleClose();
-							handleGoalList(inputValue);
+							handleAddGoal(inputValue);
 						}}>
 						<Text style={{color: '#6d6fe5'}}>Add</Text>
 					</Pressable>
