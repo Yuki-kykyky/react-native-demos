@@ -1,39 +1,53 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
 import 'react-native-reanimated';
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <View style={styles.outer}>
+      <View style={styles.operationSection}>
+        <Pressable
+          style={( { pressed } ) => [
+            {
+              backgroundColor: pressed
+                ? '#fff'
+                : '#6d6fe5'
+            },
+            styles.pressableButton
+          ]}
+          onPress={() => {
+            console.log( 'Pressable pressed' );
+          }}>
+          <Text style={{ color: '#fff' }}>Add Goal</Text>
+        </Pressable>
+      </View>
+      <View style={styles.goalList}>
+        <Text  style={{ color: '#081e79' }}>
+          there will be goal list
+        </Text>
+      </View>
+    </View>
   );
 }
+
+const styles = StyleSheet.create( {
+  outer: {
+    padding: 20,
+    backgroundColor: '#081e79',
+    flex: 1,
+  },
+  operationSection: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  goalList: {
+    flex: 9,
+  },
+  pressableButton: {
+    borderRadius: 8,
+    padding: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+} );
+
