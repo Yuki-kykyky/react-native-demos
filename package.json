@@ -1,5 +1,5 @@
 {
-  "name": "todo-demo",
+  "name": "react-native-demos",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
