@@ -1,50 +1,24 @@
-# Welcome to your Expo app 👋
+# react native 练习记录
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Week 1 - 任务清单
 
-## Get started
+目标：
+- 【布局】页面分为操作区域和展示区域。操作区域稳定的位于页面顶部；当没有内容可展示时，展示区域为空。
+- 【功能】点击操作区域，出现弹窗覆盖整个页面。弹窗包含：图片展示、输入框、操作按钮【cancel｜add】
+   - 点击cancel，关闭弹窗。
+   - 点击add，关闭弹窗，输入框内容新加至展示区。
+   - 关闭弹窗后，输入框内容不保留。
+- 【功能】点击展示区域具体内容，删除该条内容。
+- 【样式】若展示区域内容超出页面长度，出现滚动条。
 
-1. Install dependencies
+### 任务拆解
+1. 页面布局
+   - [ ] 操作区域占比 **1/5**，包含一个可点击按钮，文案为`Add Goal`
+   - [ ] 展示区域占比 **4/5**，当没有内容可展示时，展示区域为空。
+   - [ ] 展示区域内容超出页面长度，出现滚动条。
+2. 弹窗
+   - [ ] 点击`Add Goal`按钮，出现弹窗覆盖整个页面。弹窗包含：图片展示、输入框、操作按钮【cancel｜add】
+   - [ ] 点击cancel，关闭弹窗。点击add，关闭弹窗，输入框内容新加至展示区。 关闭弹窗后，输入框内容不保留。
 
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Week 2 
+...todo
