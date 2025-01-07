@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native";
-import { GoalModal } from "@/components/project-1-todo-list/GoalModal";
-import { OperationSection } from "@/components/project-1-todo-list/OperationSection";
-import { GoalListSection } from "@/components/project-1-todo-list/GoalListSection";
 import { useState } from "react";
+import { GoalModal } from "./GoalModal";
+import { OperationSection } from "./OperationSection";
+import { GoalListSection } from "./GoalListSection";
 
 export const TodoList = () => {
 	const [isVisible, setIsVisible] = useState(false);
