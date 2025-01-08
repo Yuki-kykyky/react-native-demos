@@ -1,7 +1,8 @@
 import { GameTitle } from "@/components/project-2-guess-number/components/GameTitle";
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import { useState } from "react";
 import { Colors } from "@/constants/Colors";
+import { OperationButtonGroup } from "@/components/project-2-guess-number/components/OperationButtonGroup";
 
 export const GameStart = ({setPage}: { setPage: (page: string) => void }) => {
 	const [goalNumber, setGoalNumber] = useState('');
@@ -23,16 +24,8 @@ export const GameStart = ({setPage}: { setPage: (page: string) => void }) => {
 	return (
 		<View>
 			<GameTitle title={'Game Start'}/>
-			<View style={{
-				borderColor: '#fff',
-				borderWidth: 2,
-				backgroundColor: '#ffffffdd',
-				borderRadius: 10,
-				alignItems: 'center',
-				padding: 12,
-				gap: 4
-			}}>
-				<Text style={{fontWeight:'bold', fontSize:18}}>Let's Play a Game !</Text>
+			<View style={styles.container}>
+				<Text style={{fontWeight: 'bold', fontSize: 18}}>Let's Play a Game !</Text>
 				<Text> Set a number in 1 - 99 and I will guess it.</Text>
 				<TextInput
 					maxLength={2}
@@ -41,50 +34,27 @@ export const GameStart = ({setPage}: { setPage: (page: string) => void }) => {
 					style={styles.textInput}
 					onChangeText={text => setGoalNumber(text)}
 				/>
-				<View style={{flexDirection: 'row', gap: 12}}>
-					<Pressable
-						style={styles.operationLeftButton}
-						onPress={handleReset}>
-						<Text style={styles.operationLeftText}>Reset</Text>
-					</Pressable>
-					<Pressable
-						style={styles.operationRightButton}
-						onPress={handleSubmit}
-					>
-						<Text style={styles.operationRightText}>Submit</Text>
-					</Pressable>
-				</View>
+				<OperationButtonGroup
+					handleLeft={handleReset}
+					textLeft={'Reset'}
+					textRight={'Submit'}
+					handleRight={handleSubmit}
+					themeColor={Colors.blue['400']}
+				/>
 			</View>
 		</View>
 	)
 };
 
 const styles = StyleSheet.create({
-	operationLeftButton: {
-		borderColor: Colors.blue['400'],
+	container: {
+		borderColor: '#fff',
 		borderWidth: 2,
-		backgroundColor: Colors.blue['400'],
-		padding: 8,
-		borderRadius: 8,
-		width: 100,
-	},
-	operationLeftText: {
-		textAlign: 'center',
-		color: Colors.white,
-		fontWeight: 'bold',
-	},
-	operationRightButton: {
-		borderColor: Colors.blue['400'],
-		backgroundColor: Colors.white,
-		borderWidth: 2,
-		padding: 8,
-		borderRadius: 8,
-		width: 100,
-	},
-	operationRightText: {
-		textAlign: 'center',
-		color: Colors.blue['400'],
-		fontWeight: 'bold',
+		backgroundColor: '#ffffffdd',
+		borderRadius: 10,
+		alignItems: 'center',
+		padding: 12,
+		gap: 4
 	},
 	textInput: {
 		width: 50,
