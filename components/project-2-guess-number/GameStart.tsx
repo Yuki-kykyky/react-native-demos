@@ -3,13 +3,23 @@ import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { useState } from "react";
 import { Colors } from "@/constants/Colors";
 
-export const GameStart = () => {
+export const GameStart = ({setPage}: { setPage: (page: string) => void }) => {
 	const [goalNumber, setGoalNumber] = useState('');
 
 	const handleReset = () => {
 		setGoalNumber('');
 	};
-
+	const handleSubmit = () => {
+		if (!Number(goalNumber)) {
+			alert('Please enter a valid number');
+			handleReset();
+		} else if (Number(goalNumber) < 1 || Number(goalNumber) > 99) {
+			alert('Please enter a number between 1 - 99');
+			handleReset();
+		} else {
+			setPage('in-game')
+		}
+	};
 	return (
 		<View>
 			<GameTitle title={'Game Start'}/>
@@ -37,7 +47,10 @@ export const GameStart = () => {
 						onPress={handleReset}>
 						<Text style={styles.operationLeftText}>Reset</Text>
 					</Pressable>
-					<Pressable style={styles.operationRightButton}>
+					<Pressable
+						style={styles.operationRightButton}
+						onPress={handleSubmit}
+					>
 						<Text style={styles.operationRightText}>Submit</Text>
 					</Pressable>
 				</View>
