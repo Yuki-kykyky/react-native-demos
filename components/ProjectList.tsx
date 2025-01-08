@@ -1,11 +1,11 @@
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
-import { projects } from "@/constants/projectList";
+import { projectInfos } from "@/constants/projectInfos";
 
 export const ProjectList = ({setPage}: { setPage: any }) => {
 	return (
 		<View>
 			<Text style={styles.headerText}>Project lists</Text>
-			<FlatList data={projects} renderItem={({item, index}) => (
+			<FlatList data={projectInfos} renderItem={({item, index}) => (
 				<View style={styles.projectListItem}>
 					<View style={{
 						alignItems: 'center', borderRightWidth: 2, marginRight: 8, borderColor: '#fff'
