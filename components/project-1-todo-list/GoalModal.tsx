@@ -1,5 +1,6 @@
-import { Image, Modal, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { Image, ImageBackground, Modal, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { useState } from "react";
+import { Colors } from "@/constants/Colors";
 
 export const GoalModal = ({
 	isVisible,
@@ -7,8 +8,8 @@ export const GoalModal = ({
 	handleAddGoal,
 }: {
 	isVisible: boolean,
+	setIsVisible: (value: boolean) => void,
 	handleAddGoal: (goal: string) => void,
-	setIsVisible: (value: (((prevState: boolean) => boolean) | boolean)) => void,
 }
 ) => {
 	const [inputValue, setInputValue] = useState('');
@@ -21,9 +22,16 @@ export const GoalModal = ({
 			visible={isVisible}
 			animationType="slide"
 		>
-			<View style={styles.modalLayout}>
+			<ImageBackground
+				source={require('@/assets/images/background/todo-list-modal.jpg')}
+				style={styles.modalLayout}
+			>
 				<Image
-					style={{width: 80, height: 80, tintColor: '#ffffff'}}
+					style={{
+						width: 80,
+						height: 80,
+						tintColor: Colors.green['400']
+				}}
 					source={require('@/assets/images/react-logo.png')}/>
 				<TextInput placeholder={'something need to be done'}
 									 value={inputValue}
@@ -31,9 +39,9 @@ export const GoalModal = ({
 									 style={styles.textInput}/>
 				<View style={{flexDirection: 'row', gap: 16}}>
 					<Pressable
-						style={{...styles.ModalButton, backgroundColor: '#6d6fe5'}}
+						style={{...styles.ModalButton, backgroundColor: Colors.green['400']}}
 						onPress={handleClose}>
-						<Text style={{color: '#fff'}}>Close</Text>
+						<Text style={{color: Colors.white, fontWeight:'bold'}}>Close</Text>
 					</Pressable>
 					<Pressable
 						style={{...styles.ModalButton, backgroundColor: '#fff'}}
@@ -41,10 +49,10 @@ export const GoalModal = ({
 							handleClose();
 							handleAddGoal(inputValue);
 						}}>
-						<Text style={{color: '#6d6fe5'}}>Add</Text>
+						<Text style={{color: Colors.green['400'], fontWeight:'bold'}}>Add</Text>
 					</Pressable>
 				</View>
-			</View>
+			</ImageBackground>
 		</Modal>)
 };
 
@@ -52,7 +60,6 @@ const styles = StyleSheet.create({
 	modalLayout: {
 		flex: 1,
 		padding: 20,
-		backgroundColor: '#081e79',
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
@@ -64,9 +71,9 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	textInput: {
-		borderColor: '#6d6fe5',
-		backgroundColor: '#a7aaec',
-		borderWidth: 1,
+		borderColor: Colors.green['400'],
+		backgroundColor: Colors.green['100'],
+		borderWidth: 3,
 		borderRadius: 16,
 		width: '100%',
 		padding: 16,

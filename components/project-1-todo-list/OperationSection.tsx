@@ -1,26 +1,29 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text } from "react-native";
+import { Colors } from "@/constants/Colors";
 
 export const OperationSection = (
 	{handleOpen}: { handleOpen: () => void }) => {
-	return (<View
-		style={styles.operationSection}>
+	return (
 		<Pressable
 			style={styles.addButton}
 			onPress={handleOpen}>
-			<Text style={{color: '#fff'}}>Add Goal</Text>
+			<Text style={styles.addText}>Add Goal</Text>
 		</Pressable>
-	</View>)
+	)
 };
 const styles = StyleSheet.create({
-	operationSection: {
-		flex: 1,
-		justifyContent: 'center',
-	},
 	addButton: {
 		borderRadius: 8,
+		borderColor: Colors.green['400'],
+		borderWidth: 2,
 		padding: 16,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#6d6fe5',
+		backgroundColor: Colors.green['100'],
 	},
+	addText:{
+		color: Colors.green['400'],
+		fontWeight: 'bold',
+		fontSize: 18
+	}
 });
