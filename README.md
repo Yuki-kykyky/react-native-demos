@@ -1,5 +1,9 @@
 # react native 练习记录
 
+android 手机端查看需通过 tunnel 方式启动，否则无法访问。启用 tunnel 需安装 `"@expo/ngrok": "^4.1.3"` 依赖。
+
+执行 `npm run start-phone` 在手机端查看。
+
 ## Project 1 - 任务清单
 
 ### 目标
