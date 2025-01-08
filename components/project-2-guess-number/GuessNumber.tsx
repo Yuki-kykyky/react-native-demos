@@ -1,7 +1,7 @@
-import { ImageBackground, StyleSheet, Text } from "react-native";
+import { ImageBackground, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
-import { GameTitle } from "@/components/project-2-guess-number/components/GameTitle";
+import { GameStart } from "@/components/project-2-guess-number/GameStart";
 
 export const GuessNumber = () => {
 	return (
@@ -19,8 +19,7 @@ export const GuessNumber = () => {
 				imageStyle={{opacity: 0.6}}
 				style={styles.componentLayout}
 			>
-				<GameTitle title={'Game Start'}/>
-				<Text style={{color: '#fff'}}>Guess Number</Text>
+				<GameStart/>
 			</ImageBackground>
 		</LinearGradient>
 	)
