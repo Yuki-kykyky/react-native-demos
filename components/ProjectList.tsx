@@ -3,7 +3,7 @@ import { projectInfos } from "@/constants/projectInfos";
 
 export const ProjectList = ({setPage}: { setPage: any }) => {
 	return (
-		<View>
+		<View style={styles.componentLayout}>
 			<Text style={styles.headerText}>Project lists</Text>
 			<FlatList data={projectInfos} renderItem={({item, index}) => (
 				<View style={styles.projectListItem}>
@@ -38,6 +38,11 @@ export const ProjectList = ({setPage}: { setPage: any }) => {
 	)
 }
 const styles = StyleSheet.create({
+	componentLayout: {
+		padding: 20,
+		backgroundColor: '#081e79',
+		flex: 1,
+	},
 	headerText: {
 		color: '#fff',
 		fontSize: 24,

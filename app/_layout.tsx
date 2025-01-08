@@ -1,26 +1,41 @@
 import 'react-native-reanimated';
-import { StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import { ProjectList } from "@/components/ProjectList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function RootLayout() {
   const [page, setPage] = useState();
-  let screen = <ProjectList setPage={setPage}/>;
-  if (page) {
-    screen = page;
-  }
+  const [screen, setScreen] = useState(<ProjectList setPage={setPage}/>);
+
+  useEffect(() => {
+    if (page) {
+      setScreen(page);
+    } else {
+      setScreen(<ProjectList setPage={setPage}/>);
+    }
+  }, [page]);
+
   return (
-    <View style={styles.componentLayout}>
+    <View style={{flex: 1}}>
+      {page && (
+        <Pressable onPress={() => setPage(undefined)} style={styles.backButton}>
+          <Ionicons name="arrow-back-circle" size={36} color="white"/>
+        </Pressable>
+      )}
       {screen}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  componentLayout: {
-    padding: 20,
-    backgroundColor: '#081e79',
-    flex: 1,
+  backButton: {
+    position: 'absolute',
+    zIndex: 1,
+    bottom: 20,
+    left: 20,
+    padding: 8,
+    borderRadius: 8,
   },
 });
 
