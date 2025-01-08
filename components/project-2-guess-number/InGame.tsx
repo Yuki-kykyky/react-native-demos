@@ -1,6 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { GameTitle } from "@/components/project-2-guess-number/components/GameTitle";
-import { OperationButtonGroup } from "@/components/project-2-guess-number/components/OperationButtonGroup";
 import { Colors } from "@/constants/Colors";
 import { useState } from "react";
 
@@ -40,15 +39,45 @@ export const InGame = ({setPage}: { setPage: (page: string) => void }) => {
 			<View style={styles.container}>
 				<Text style={{fontWeight: 'bold', fontSize: 18}}>Is this your number ?</Text>
 				<Text style={{fontSize: 24}}>{guessHistory[0]}</Text>
-				<OperationButtonGroup
-					handleLeft={() => handleGuess(true)}
-					textLeft={'too low'}
-					textRight={'too high'}
-					handleRight={() => handleGuess(false)}
-					themeColor={Colors.blue['400']}
-				/>
+				{/*<OperationButtonGroup*/}
+				{/*	handleLeft={() => handleGuess(true)}*/}
+				{/*	textLeft={'too low'}*/}
+				{/*	textRight={'too high'}*/}
+				{/*	handleRight={() => handleGuess(false)}*/}
+				{/*	themeColor={Colors.blue['400']}*/}
+				{/*/>*/}
 				{guessHistory[0] === goalNumber && (<Text
 					style={{color: Colors.green['400'], fontSize: 18, position: 'absolute', right: 20, bottom: 20}}>✅</Text>)}
+			</View>
+			<View style={{...styles.container, marginTop: 20}}>
+				<Text style={{
+					fontWeight: 'bold',
+					fontSize: 18,
+					marginBottom:12,
+					paddingVertical:8,
+					paddingHorizontal:36,
+					borderBottomColor:Colors.pink['400'],
+					color:Colors.pink['800'],
+					borderBottomWidth:2
+				}}>Guess History</Text>
+				<ScrollView style={{width: '100%'}}>
+					{guessHistory.map((guess, index) => (
+						<View key={index}
+									style={{
+										flexDirection: 'row',
+										justifyContent: 'space-between',
+										backgroundColor: Colors.pink['50'],
+										borderColor: Colors.pink['400'],
+										borderWidth: 2,
+										borderRadius: 12,
+										marginBottom: 12,
+										padding: 12
+									}}>
+							<Text>Round {guessHistory.length - index}</Text>
+							<Text>Guess Number: {guess}</Text>
+						</View>
+					))}
+				</ScrollView>
 			</View>
 		</View>
 	)

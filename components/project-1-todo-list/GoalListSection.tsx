@@ -43,5 +43,4 @@ const styles = StyleSheet.create({
 		marginBottom: 8,
 		justifyContent: 'flex-start'
 	},
-
 });
