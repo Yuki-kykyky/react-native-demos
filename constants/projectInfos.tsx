@@ -3,5 +3,5 @@ import { GuessNumber } from "@/components/project-2-guess-number/GuessNumber";
 
 export const projectInfos = [
 	{date: '2025-01-06', projectName: 'Todo List', page: <TodoList/>},
-	{date: '2025-01-08', projectName: 'Guess Number', page: <GuessNumber/>},
+	{date: '2025-01-09', projectName: 'Guess Number', page: <GuessNumber/>},
 ];
