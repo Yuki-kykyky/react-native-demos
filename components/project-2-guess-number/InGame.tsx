@@ -1,8 +1,9 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { GameTitle } from "@/components/project-2-guess-number/components/GameTitle";
 import { Colors } from "@/constants/Colors";
 import { useState } from "react";
 import { OperationButtonGroup } from "@/components/project-2-guess-number/components/OperationButtonGroup";
+import { GuessHistory } from "@/components/project-2-guess-number/components/GuessHistory";
 
 export const InGame = ({setPage}: { setPage: (page: string) => void }) => {
 	const goalNumber = '53';
@@ -52,36 +53,7 @@ export const InGame = ({setPage}: { setPage: (page: string) => void }) => {
 				{guessHistory[0] === goalNumber && (<Text
 					style={{color: Colors.green['400'], fontSize: 18, position: 'absolute', right: 20, bottom: 20}}>✅</Text>)}
 			</View>
-			<View style={{...styles.container, marginTop: 20}}>
-				<Text style={{
-					fontWeight: 'bold',
-					fontSize: 18,
-					marginBottom:12,
-					paddingVertical:8,
-					paddingHorizontal:36,
-					borderBottomColor:Colors.pink['400'],
-					color:Colors.pink['800'],
-					borderBottomWidth:2
-				}}>Guess History</Text>
-				<ScrollView style={{width: '100%'}}>
-					{guessHistory.map((guess, index) => (
-						<View key={index}
-									style={{
-										flexDirection: 'row',
-										justifyContent: 'space-between',
-										backgroundColor: Colors.pink['50'],
-										borderColor: Colors.pink['400'],
-										borderWidth: 2,
-										borderRadius: 12,
-										marginBottom: 12,
-										padding: 12
-									}}>
-							<Text>Round {guessHistory.length - index}</Text>
-							<Text>[{min} - {max}] Guess Number: {guess}</Text>
-						</View>
-					))}
-				</ScrollView>
-			</View>
+			<GuessHistory guessHistory={guessHistory}/>
 		</View>
 	)
 }
