@@ -4,9 +4,10 @@ import { Colors } from "@/constants/Colors";
 import { useState } from "react";
 import { OperationButtonGroup } from "@/components/project-2-guess-number/components/OperationButtonGroup";
 import { GuessHistory } from "@/components/project-2-guess-number/components/GuessHistory";
+import { useGuessNumber } from "@/hooks/useGuessNumber";
 
 export const InGame = ({setPage}: { setPage: (page: string) => void }) => {
-	const goalNumber = '53';
+	const {goalNumber} = useGuessNumber();
 	const getRandomNumber = ({min, max}: { min: string, max: string }) =>
 		String(Math.floor(Math.random() * (Number(max) - Number(min) + 1)) + Number(min));
 

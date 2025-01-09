@@ -1,23 +1,27 @@
 import { GameTitle } from "@/components/project-2-guess-number/components/GameTitle";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import { useState } from "react";
 import { Colors } from "@/constants/Colors";
 import { OperationButtonGroup } from "@/components/project-2-guess-number/components/OperationButtonGroup";
+import { useGuessNumber } from "@/hooks/useGuessNumber";
+import { useState } from "react";
 
 export const GameStart = ({setPage}: { setPage: (page: string) => void }) => {
-	const [goalNumber, setGoalNumber] = useState('');
+	const [input, setInput] = useState('');
+	const {setGoalNumber} = useGuessNumber();
 
 	const handleReset = () => {
 		setGoalNumber('');
 	};
+
 	const handleSubmit = () => {
-		if (!Number(goalNumber)) {
+		if (!Number(input)) {
 			alert('Please enter a valid number');
 			handleReset();
-		} else if (Number(goalNumber) < 1 || Number(goalNumber) > 99) {
+		} else if (Number(input) < 1 || Number(input) > 99) {
 			alert('Please enter a number between 1 - 99');
 			handleReset();
 		} else {
+			setGoalNumber(input);
 			setPage('in-game')
 		}
 	};
@@ -29,10 +33,10 @@ export const GameStart = ({setPage}: { setPage: (page: string) => void }) => {
 				<Text> Set a number in 1 - 99 and I will guess it.</Text>
 				<TextInput
 					maxLength={2}
-					value={goalNumber}
+					value={input}
 					keyboardType={'numeric'}
 					style={styles.textInput}
-					onChangeText={text => setGoalNumber(text)}
+					onChangeText={text => setInput(text)}
 				/>
 				<OperationButtonGroup
 					handleLeft={handleReset}
