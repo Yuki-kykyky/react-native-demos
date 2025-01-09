@@ -2,6 +2,7 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { GameTitle } from "@/components/project-2-guess-number/components/GameTitle";
 import { Colors } from "@/constants/Colors";
 import { useState } from "react";
+import { OperationButtonGroup } from "@/components/project-2-guess-number/components/OperationButtonGroup";
 
 export const InGame = ({setPage}: { setPage: (page: string) => void }) => {
 	const goalNumber = '53';
@@ -16,14 +17,16 @@ export const InGame = ({setPage}: { setPage: (page: string) => void }) => {
 		const currentGuess = Number(guessHistory[0]);
 		const handleLow = () => {
 			// currentGuess < goalNumber
-			setMin(String(currentGuess) + 1);
-			setGuessHistory([getRandomNumber({min: guessHistory[0], max}), ...guessHistory]);
+			const newMin = String(currentGuess + 1);
+			setMin(newMin);
+			setGuessHistory([getRandomNumber({min: newMin, max}), ...guessHistory]);
 		}
 
 		const handleHigh = () => {
 			// currentGuess > goalNumber
-			setMax(String(currentGuess - 1));
-			setGuessHistory([getRandomNumber({min, max: guessHistory[0]}), ...guessHistory]);
+			const newMax = String(currentGuess - 1);
+			setMax(newMax);
+			setGuessHistory([getRandomNumber({min, max: newMax}), ...guessHistory]);
 		}
 
 		if ((shouldGoHigh && currentGuess >= Number(goalNumber)) || (!shouldGoHigh && currentGuess <= Number(goalNumber))) {
@@ -39,13 +42,13 @@ export const InGame = ({setPage}: { setPage: (page: string) => void }) => {
 			<View style={styles.container}>
 				<Text style={{fontWeight: 'bold', fontSize: 18}}>Is this your number ?</Text>
 				<Text style={{fontSize: 24}}>{guessHistory[0]}</Text>
-				{/*<OperationButtonGroup*/}
-				{/*	handleLeft={() => handleGuess(true)}*/}
-				{/*	textLeft={'too low'}*/}
-				{/*	textRight={'too high'}*/}
-				{/*	handleRight={() => handleGuess(false)}*/}
-				{/*	themeColor={Colors.blue['400']}*/}
-				{/*/>*/}
+				<OperationButtonGroup
+					handleLeft={() => handleGuess(true)}
+					textLeft={'too low'}
+					textRight={'too high'}
+					handleRight={() => handleGuess(false)}
+					themeColor={Colors.blue['400']}
+				/>
 				{guessHistory[0] === goalNumber && (<Text
 					style={{color: Colors.green['400'], fontSize: 18, position: 'absolute', right: 20, bottom: 20}}>✅</Text>)}
 			</View>
@@ -74,7 +77,7 @@ export const InGame = ({setPage}: { setPage: (page: string) => void }) => {
 										padding: 12
 									}}>
 							<Text>Round {guessHistory.length - index}</Text>
-							<Text>Guess Number: {guess}</Text>
+							<Text>[{min} - {max}] Guess Number: {guess}</Text>
 						</View>
 					))}
 				</ScrollView>
