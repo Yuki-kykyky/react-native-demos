@@ -1,5 +1,11 @@
 export const Colors = {
   white: '#ffffff',
+  grey: {
+    100: '#f5f5f5',
+    200: '#e0e0e0',
+    400: '#757575',
+    800: '#212121',
+  },
   red: {
     100: '#fcd8d8',
     200: '#e56868',

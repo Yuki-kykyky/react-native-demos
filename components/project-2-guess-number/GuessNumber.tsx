@@ -4,6 +4,7 @@ import { Colors } from "@/constants/Colors";
 import { GameStart } from "@/components/project-2-guess-number/GameStart";
 import { useEffect, useState } from "react";
 import { InGame } from "@/components/project-2-guess-number/InGame";
+import { GameEnd } from "@/components/project-2-guess-number/GameEnd";
 
 export const GuessNumber = () => {
 	const [page, setPage] = useState('');
@@ -15,6 +16,8 @@ export const GuessNumber = () => {
 			setScreen(
 				<InGame setPage={setPage}/>
 			);
+		} else if (page === 'game-end') {
+			setScreen(<GameEnd setPage={setPage}/>);
 		} else {
 			setScreen(
 				<GameStart setPage={setPage}/>

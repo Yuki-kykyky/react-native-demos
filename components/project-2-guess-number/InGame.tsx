@@ -1,10 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { GameTitle } from "@/components/project-2-guess-number/components/GameTitle";
 import { Colors } from "@/constants/Colors";
 import { useState } from "react";
 import { OperationButtonGroup } from "@/components/project-2-guess-number/components/OperationButtonGroup";
 import { GuessHistory } from "@/components/project-2-guess-number/components/GuessHistory";
 import { useGuessNumber } from "@/hooks/useGuessNumber";
+import { FontAwesome } from "@expo/vector-icons";
 
 export const InGame = ({setPage}: { setPage: (page: string) => void }) => {
 	const {goalNumber} = useGuessNumber();
@@ -14,7 +15,7 @@ export const InGame = ({setPage}: { setPage: (page: string) => void }) => {
 	const [min, setMin] = useState('0');
 	const [max, setMax] = useState('100');
 	const [guessHistory, setGuessHistory] = useState<string[]>([getRandomNumber({min, max})]);
-
+	const bingo = guessHistory[0] === goalNumber;
 	const handleGuess = (shouldGoHigh: boolean) => {
 		const currentGuess = Number(guessHistory[0]);
 		const handleLow = () => {
@@ -45,14 +46,19 @@ export const InGame = ({setPage}: { setPage: (page: string) => void }) => {
 				<Text style={{fontWeight: 'bold', fontSize: 18}}>Is this your number ?</Text>
 				<Text style={{fontSize: 24}}>{guessHistory[0]}</Text>
 				<OperationButtonGroup
+					disabled={bingo}
 					handleLeft={() => handleGuess(true)}
 					textLeft={'too low'}
 					textRight={'too high'}
 					handleRight={() => handleGuess(false)}
 					themeColor={Colors.blue['400']}
 				/>
-				{guessHistory[0] === goalNumber && (<Text
-					style={{color: Colors.green['400'], fontSize: 18, position: 'absolute', right: 20, bottom: 20}}>✅</Text>)}
+				{bingo && (
+					<View style={styles.bingoHint}>
+						<Pressable onPress={() => setPage('game-end')}>
+							<FontAwesome name="check-circle" size={32} color={Colors.green['400']}/>
+						</Pressable>
+					</View>)}
 			</View>
 			<GuessHistory guessHistory={guessHistory}/>
 		</View>
@@ -69,4 +75,10 @@ const styles = StyleSheet.create({
 		gap: 8,
 		position: 'relative',
 	},
+	bingoHint: {
+		fontSize: 18,
+		position: 'absolute',
+		right: 20,
+		bottom: 14
+	}
 });

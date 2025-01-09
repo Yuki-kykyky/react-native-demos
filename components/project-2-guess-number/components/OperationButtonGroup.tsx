@@ -6,7 +6,8 @@ interface IOperationButtonGroupProps {
 	handleRight: () => void,
 	textLeft: string,
 	textRight: string,
-	themeColor: string
+	themeColor: string,
+	disabled?: boolean
 }
 
 export const OperationButtonGroup = (
@@ -15,23 +16,30 @@ export const OperationButtonGroup = (
 		textLeft,
 		handleRight,
 		textRight,
-		themeColor
+		themeColor,
+		disabled
 	}: IOperationButtonGroupProps) => {
+	let buttonColor = themeColor;
+	if (disabled) {
+		buttonColor = Colors.grey['400'];
+	}
 	return (
 		<View style={{flexDirection: 'row', gap: 12}}>
 			<Pressable
+				disabled={disabled}
 				style={{
 					...styles.operationLeftButton,
-					borderColor: themeColor,
-					backgroundColor: themeColor,
+					borderColor: buttonColor,
+					backgroundColor: buttonColor,
 				}}
 				onPress={handleLeft}>
 				<Text style={styles.operationLeftText}>{textLeft}</Text>
 			</Pressable>
 			<Pressable
-				style={{...styles.operationRightButton, borderColor: themeColor}}
+				disabled={disabled}
+				style={{...styles.operationRightButton, borderColor: buttonColor}}
 				onPress={handleRight}>
-				<Text style={{...styles.operationRightText, color: themeColor}}>{textRight}</Text>
+				<Text style={{...styles.operationRightText, color: buttonColor}}>{textRight}</Text>
 			</Pressable>
 		</View>
 	)
