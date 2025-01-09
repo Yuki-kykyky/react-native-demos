@@ -3,9 +3,9 @@ import { Colors } from "@/constants/Colors";
 
 export const GuessHistory = ({guessHistory}: { guessHistory: string[] }) => {
 	return (
-		<View style={{...styles.container, marginTop: 20}}>
+		<View style={styles.container}>
 			<Text style={styles.titleText}>Guess History</Text>
-			<ScrollView style={{width: '100%', maxHeight: 400}}>
+			<ScrollView style={{width: '100%', maxHeight: 360}}>
 				{guessHistory.map((guess, index) => (
 					<View key={index} style={styles.guessHistoryItem}>
 						<View style={{...styles.guessHistoryIndex, justifyContent: 'flex-start'}}>
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
 		padding: 12,
 		gap: 8,
 		position: 'relative',
+		marginTop: 20,
 	},
 	titleText: {
 		fontWeight: 'bold',
@@ -54,14 +55,14 @@ const styles = StyleSheet.create({
 		padding: 12
 	},
 	guessHistoryIndex: {
-		flex: 2,
+		flex: 3,
 		borderRightWidth: 2,
 		borderRightColor: Colors.pink['400'],
 		paddingRight: 8,
 		flexDirection: 'row',
 	},
 	guessHistoryContent: {
-		flex: 8,
+		flex: 9,
 		flexDirection: 'row',
 		justifyContent: 'flex-end'
 	},

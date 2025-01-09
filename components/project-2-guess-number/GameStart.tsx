@@ -10,7 +10,7 @@ export const GameStart = ({setPage}: { setPage: (page: string) => void }) => {
 	const {setGoalNumber} = useGuessNumber();
 
 	const handleReset = () => {
-		setGoalNumber('');
+		setInput('');
 	};
 
 	const handleSubmit = () => {
