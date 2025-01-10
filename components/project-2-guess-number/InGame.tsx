@@ -8,7 +8,7 @@ import { useGuessNumber } from "@/hooks/useGuessNumber";
 import { FontAwesome } from "@expo/vector-icons";
 
 export const InGame = ({setPage}: { setPage: (page: string) => void }) => {
-	const {goalNumber, setGuessRound} = useGuessNumber();
+	const { goalNumber, setGuessRound } = useGuessNumber() as { goalNumber: string; setGuessRound: (round: number) => void };
 	const getRandomNumber = ({min, max}: { min: string, max: string }) =>
 		String(Math.floor(Math.random() * (Number(max) - Number(min) + 1)) + Number(min));
 

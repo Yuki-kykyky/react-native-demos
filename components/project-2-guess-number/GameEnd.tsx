@@ -5,7 +5,7 @@ import { GameTitle } from "@/components/project-2-guess-number/components/GameTi
 import { useGuessNumber } from "@/hooks/useGuessNumber";
 
 export const GameEnd = ({setPage}: { setPage: (page: string) => void }) => {
-	const {goalNumber, guessRound} = useGuessNumber();
+	const {goalNumber, guessRound} = useGuessNumber() as { goalNumber: string; guessRound: number };
 
 	return (
 		<View>

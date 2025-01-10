@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export const GameStart = ({setPage}: { setPage: (page: string) => void }) => {
 	const [input, setInput] = useState('');
-	const {setGoalNumber} = useGuessNumber();
+	const {setGoalNumber} = useGuessNumber() as { setGoalNumber: (goalNumber: string) => void };
 
 	const handleReset = () => {
 		setInput('');
