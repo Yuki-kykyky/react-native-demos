@@ -1,5 +1,5 @@
 import { GameTitle } from "@/components/project-2-guess-number/components/GameTitle";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View } from "react-native";
 import { Colors } from "@/constants/Colors";
 import { OperationButtonGroup } from "@/components/project-2-guess-number/components/OperationButtonGroup";
 import { useGuessNumber } from "@/hooks/useGuessNumber";
@@ -31,13 +31,15 @@ export const GameStart = ({setPage}: { setPage: (page: string) => void }) => {
 			<View style={styles.container}>
 				<Text style={{fontWeight: 'bold', fontSize: 18}}>Let's Play a Game !</Text>
 				<Text> Set a number in 1 - 99 and I will guess it.</Text>
-				<TextInput
-					maxLength={2}
-					value={input}
-					keyboardType={'numeric'}
-					style={styles.textInput}
-					onChangeText={text => setInput(text)}
-				/>
+				<KeyboardAvoidingView behavior={Platform.OS === 'ios' ? "padding" : 'height'}>
+					<TextInput
+						maxLength={2}
+						value={input}
+						keyboardType={'numeric'}
+						style={styles.textInput}
+						onChangeText={text => setInput(text)}
+					/>
+				</KeyboardAvoidingView>
 				<OperationButtonGroup
 					handleLeft={handleReset}
 					textLeft={'Reset'}

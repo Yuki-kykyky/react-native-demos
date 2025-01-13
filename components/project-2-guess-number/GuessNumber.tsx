@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground, SafeAreaView, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
 import { GameStart } from "@/components/project-2-guess-number/GameStart";
@@ -40,7 +40,9 @@ export const GuessNumber = () => {
 				imageStyle={{opacity: 0.6}}
 				style={styles.componentLayout}
 			>
-				{screen}
+				<SafeAreaView>
+					{screen}
+				</SafeAreaView>
 			</ImageBackground>
 		</LinearGradient>
 	)
