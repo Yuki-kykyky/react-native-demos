@@ -13,6 +13,7 @@ export const OperationSection = (
 };
 const styles = StyleSheet.create({
 	addButton: {
+		marginTop: 40,
 		borderRadius: 8,
 		borderColor: Colors.green['400'],
 		borderWidth: 2,
