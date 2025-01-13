@@ -1,10 +1,14 @@
-import { FlatList, ImageBackground, Pressable, StyleSheet, Text, View } from "react-native";
+import { FlatList, ImageBackground, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { projectInfos } from "@/constants/projectInfos";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
+import { useScreenSize } from "@/hooks/useScreenSize";
 
 export const ProjectList = ({setPage}: { setPage: any }) => {
+	const {isLandscape} = useScreenSize();
+
 	return (
+		<SafeAreaView style={{flex: 1}}>
 		<LinearGradient colors={[Colors.purple["400"], Colors.purple['100']]} style={{flex: 1}}>
 			<ImageBackground
 				imageStyle={{opacity: 0.3}}
@@ -12,8 +16,17 @@ export const ProjectList = ({setPage}: { setPage: any }) => {
 				style={styles.componentLayout}
 			>
 				<Text style={styles.headerText}>Project lists</Text>
-				<FlatList data={projectInfos} renderItem={({item, index}) => (
-					<View style={styles.projectListItem}>
+				<FlatList
+					key={isLandscape ? '2' : '1'}
+					data={projectInfos}
+					numColumns={isLandscape ? 2 : 1}
+					columnWrapperStyle={isLandscape && {gap: 8, justifyContent: 'space-between'}}
+					renderItem={({item, index}) => (
+						<View style={[styles.projectListItem, {
+							minWidth: isLandscape ? 200 : 335,
+							maxWidth: isLandscape ? 500 : 400,
+							width: isLandscape ? '49%' : '100%'
+						}]}>
 						<View style={{
 							alignItems: 'center',
 							borderRightWidth: 2,
@@ -37,7 +50,7 @@ export const ProjectList = ({setPage}: { setPage: any }) => {
 									backgroundColor: Colors.purple['400'],
 									padding: 8,
 									borderRadius: 8,
-									width: 135,
+									width: 120,
 								}}>
 									<Text style={{color: Colors.white, textAlign: 'center'}}>{item.projectName}</Text>
 								</Pressable>
@@ -47,11 +60,13 @@ export const ProjectList = ({setPage}: { setPage: any }) => {
 				)}/>
 			</ImageBackground>
 		</LinearGradient>
+		</SafeAreaView>
 	)
 }
 const styles = StyleSheet.create({
 	componentLayout: {
-		padding: 20,
+		paddingHorizontal: 20,
+		paddingVertical: 8,
 		flex: 1,
 	},
 	headerText: {

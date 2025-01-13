@@ -4,6 +4,20 @@ android 手机端查看需通过 tunnel 方式启动，否则无法访问。启�
 
 执行 `npm run start-phone` 在手机端查看。
 
+## Adaptive Layout
+
+### 目标
+- 不同手机尺寸：（默认竖屏情况下的）宽度适配
+> 尺寸参考：
+> 
+> [ small ] 【ios】375(dp) x 812(dp) | **iPhone X**
+> 
+> [ medium ]【android】412(dp) x 915(dp) |  **PIXEL 7**
+> 
+> [ large ]【ios】430(dp) x 932(dp) | **iPhone14 Pro Max**
+
+- （根据项目场景）适应：横屏 / 竖屏
+
 ## Project 1 - 任务清单
 
 ### 目标
