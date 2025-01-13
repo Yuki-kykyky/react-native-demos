@@ -1,4 +1,4 @@
-import { FlatList, ImageBackground, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { FlatList, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { projectInfos } from "@/constants/projectInfos";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
@@ -9,12 +9,12 @@ export const ProjectList = ({setPage}: { setPage: any }) => {
 
 	return (
 		<SafeAreaView style={{flex: 1}}>
-		<LinearGradient colors={[Colors.purple["400"], Colors.purple['100']]} style={{flex: 1}}>
-			<ImageBackground
-				imageStyle={{opacity: 0.3}}
-				source={require('@/assets/images/background/project-list.jpg')}
-				style={styles.componentLayout}
-			>
+			<LinearGradient colors={[Colors.purple["400"], Colors.purple['100']]} style={styles.componentLayout}>
+				{/*<ImageBackground*/}
+				{/*	imageStyle={{opacity: 0.3}}*/}
+				{/*	source={require('@/assets/images/background/project-list.png')}*/}
+				{/*	style={styles.componentLayout}*/}
+				{/*>*/}
 				<Text style={styles.headerText}>Project lists</Text>
 				<FlatList
 					key={isLandscape ? '2' : '1'}
@@ -58,7 +58,7 @@ export const ProjectList = ({setPage}: { setPage: any }) => {
 						</View>
 					</View>
 				)}/>
-			</ImageBackground>
+				{/*</ImageBackground>*/}
 		</LinearGradient>
 		</SafeAreaView>
 	)
