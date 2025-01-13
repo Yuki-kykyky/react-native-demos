@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Colors } from "@/constants/Colors";
+import React from "react";
 
 interface IOperationButtonGroupProps {
 	handleLeft: () => void,
@@ -7,7 +8,8 @@ interface IOperationButtonGroupProps {
 	textLeft: string,
 	textRight: string,
 	themeColor: string,
-	disabled?: boolean
+	disabled?: boolean,
+	slot?: React.ReactNode
 }
 
 export const OperationButtonGroup = (
@@ -17,7 +19,8 @@ export const OperationButtonGroup = (
 		handleRight,
 		textRight,
 		themeColor,
-		disabled
+		disabled,
+		slot
 	}: IOperationButtonGroupProps) => {
 	let buttonColor = themeColor;
 	if (disabled) {
@@ -35,6 +38,7 @@ export const OperationButtonGroup = (
 				onPress={handleLeft}>
 				<Text style={styles.operationLeftText}>{textLeft}</Text>
 			</Pressable>
+			{slot}
 			<Pressable
 				disabled={disabled}
 				style={{...styles.operationRightButton, borderColor: buttonColor}}

@@ -1,11 +1,13 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Colors } from "@/constants/Colors";
+import { useScreenSize } from "@/hooks/useScreenSize";
 
 export const GuessHistory = ({guessHistory}: { guessHistory: string[] }) => {
+	const {isLandscape} = useScreenSize();
 	return (
 		<View style={styles.container}>
 			<Text style={styles.titleText}>Guess History</Text>
-			<ScrollView style={{width: '100%', maxHeight: 360}}>
+			<ScrollView style={{width: '100%', maxHeight: isLandscape ? 120 : 360}}>
 				{guessHistory.map((guess, index) => (
 					<View key={index} style={styles.guessHistoryItem}>
 						<View style={{...styles.guessHistoryIndex, justifyContent: 'flex-start'}}>
@@ -35,9 +37,9 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		alignItems: 'center',
 		padding: 12,
+		marginHorizontal: 12,
 		gap: 8,
 		position: 'relative',
-		marginTop: 20,
 	},
 	titleText: {
 		fontWeight: 'bold',
