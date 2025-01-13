@@ -9,8 +9,13 @@ export const GuessHistory = ({guessHistory}: { guessHistory: string[] }) => {
 				{guessHistory.map((guess, index) => (
 					<View key={index} style={styles.guessHistoryItem}>
 						<View style={{...styles.guessHistoryIndex, justifyContent: 'flex-start'}}>
-							<Text style={{color: Colors.pink['800'], fontWeight: 'bold', flex: 1}}>Round </Text>
-							<Text style={styles.guessItemNumber}>{guessHistory.length - index}</Text>
+							<Text style={{color: Colors.pink['800'], fontWeight: 'bold'}}>Round </Text>
+							<Text style={{
+								...styles.guessItemNumber,
+								borderRightWidth: 2,
+								paddingRight: 8,
+								borderRightColor: Colors.pink['400']
+							}}>{guessHistory.length - index}</Text>
 						</View>
 						<View style={styles.guessHistoryContent}>
 							<Text style={{color: Colors.pink['800']}}>Guess Number: </Text>
@@ -46,7 +51,6 @@ const styles = StyleSheet.create({
 	},
 	guessHistoryItem: {
 		flexDirection: 'row',
-		justifyContent: 'space-between',
 		backgroundColor: Colors.pink['50'],
 		borderColor: Colors.pink['400'],
 		borderWidth: 2,
@@ -56,8 +60,6 @@ const styles = StyleSheet.create({
 	},
 	guessHistoryIndex: {
 		flex: 3,
-		borderRightWidth: 2,
-		borderRightColor: Colors.pink['400'],
 		paddingRight: 8,
 		flexDirection: 'row',
 	},
@@ -67,7 +69,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'flex-end'
 	},
 	guessItemNumber: {
-		width: 20,
+		width: 28,
 		color: Colors.pink['800'],
 		fontWeight: 'bold',
 		textAlign: 'right',
