@@ -3,13 +3,7 @@ import { InGame } from "@/components/project-2-guess-number/InGame";
 import { GameEnd } from "@/components/project-2-guess-number/GameEnd";
 import { createStackNavigator } from "@react-navigation/stack";
 
-const projectTwoStack = createStackNavigator({
-	screens: {
-		GameStart: GameStart,
-		InGame: InGame,
-		GameEnd: GameEnd
-	}
-});
+const projectTwoStack = createStackNavigator();
 
 export const GuessNumber = () => {
 	return (
