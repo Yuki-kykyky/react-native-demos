@@ -1,12 +1,14 @@
 import 'react-native-reanimated';
-import { ProjectList } from "@/app/ProjectList";
+import { ProjectList } from "./ProjectList";
 import { createStackNavigator } from "@react-navigation/stack";
-import { TodoList } from "@/components/project-1-todo-list/TodoList";
-import { GuessNumber } from "@/components/project-2-guess-number/GuessNumber";
+import { TodoList } from "./TodoList";
+import { GuessNumber } from "./GuessNumber";
+import { HomePage } from "@/app/HomePage";
 
 const myStack = createStackNavigator({
   screens: {
-    Home: ProjectList,
+    Home: HomePage,
+    ProjectList: ProjectList,
     ProjectOne: TodoList,
     ProjectTwo: GuessNumber
   }
@@ -19,7 +21,8 @@ export default function RootLayout() {
         headerShown: false
       })}
     >
-      <myStack.Screen name="Home" component={ProjectList}/>
+      <myStack.Screen name="Home" component={HomePage}/>
+      <myStack.Screen name="ProjectList" component={ProjectList}/>
       <myStack.Screen name="ProjectOne" component={TodoList}/>
       <myStack.Screen name="ProjectTwo" component={GuessNumber}/>
     </myStack.Navigator>

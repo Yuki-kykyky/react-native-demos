@@ -60,6 +60,8 @@ export const ProjectList = () => {
 		</SafeAreaView>
 	)
 }
+export default ProjectList;
+
 const styles = StyleSheet.create({
 	componentLayout: {
 		paddingHorizontal: 20,

@@ -20,3 +20,5 @@ export const GuessNumber = () => {
 		</projectTwoStack.Navigator>
 	)
 };
+
+export default GuessNumber;

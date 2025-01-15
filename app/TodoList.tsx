@@ -1,8 +1,8 @@
 import { ImageBackground, Pressable, StyleSheet } from "react-native";
 import { useState } from "react";
-import { GoalModal } from "./GoalModal";
-import { OperationSection } from "./OperationSection";
-import { GoalListSection } from "./GoalListSection";
+import { GoalModal } from "@/components/project-1-todo-list/GoalModal";
+import { OperationSection } from "@/components/project-1-todo-list/OperationSection";
+import { GoalListSection } from "@/components/project-1-todo-list/GoalListSection";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -36,6 +36,9 @@ export const TodoList = () => {
 		</ImageBackground>
 	)
 }
+
+export default TodoList;
+
 const styles = StyleSheet.create({
 	componentLayout: {
 		padding: 20,
