@@ -4,7 +4,7 @@ import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { GameTitle } from "@/components/project-2-guess-number/components/GameTitle";
 import { useGuessNumber } from "@/hooks/useGuessNumber";
 
-export const GameEnd = ({setPage}: { setPage: (page: string) => void }) => {
+export const GameEnd = () => {
 	const {goalNumber, guessRound} = useGuessNumber() as { goalNumber: string; guessRound: number };
 
 	return (
@@ -25,9 +25,7 @@ export const GameEnd = ({setPage}: { setPage: (page: string) => void }) => {
 							<Text style={styles.summaryEmphasize}>{goalNumber}</Text>
 						</View>
 					</View>
-					<Pressable
-						style={styles.button}
-						onPress={() => setPage('game-start')}>
+					<Pressable style={styles.button}>
 						<Text style={{fontWeight: 'bold', color: Colors.pink['400'], fontSize: 16}}>start new game</Text>
 					</Pressable>
 				</View>

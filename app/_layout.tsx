@@ -1,42 +1,27 @@
 import 'react-native-reanimated';
-import { Pressable, StyleSheet, View } from "react-native";
-import { ProjectList } from "@/components/ProjectList";
-import { useEffect, useState } from "react";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { ProjectList } from "@/app/ProjectList";
+import { createStackNavigator } from "@react-navigation/stack";
+import { TodoList } from "@/components/project-1-todo-list/TodoList";
+import { GuessNumber } from "@/components/project-2-guess-number/GuessNumber";
+
+const myStack = createStackNavigator({
+  screens: {
+    Home: ProjectList,
+    ProjectOne: TodoList,
+    ProjectTwo: GuessNumber
+  }
+})
 
 export default function RootLayout() {
-  const [page, setPage] = useState();
-  const [screen, setScreen] = useState(<ProjectList setPage={setPage}/>);
-
-  useEffect(() => {
-    if (page) {
-      setScreen(page);
-    } else {
-      setScreen(<ProjectList setPage={setPage}/>);
-    }
-  }, [page]);
-
   return (
-    <View style={{flex: 1}}>
-      {page && (
-        <Pressable onPress={() => setPage(undefined)} style={styles.backButton}>
-          <Ionicons name="arrow-back-circle" size={36} color="white"/>
-        </Pressable>
-      )}
-      {screen}
-    </View>
+    <myStack.Navigator
+      screenOptions={({}) => ({
+        headerShown: false
+      })}
+    >
+      <myStack.Screen name="Home" component={ProjectList}/>
+      <myStack.Screen name="ProjectOne" component={TodoList}/>
+      <myStack.Screen name="ProjectTwo" component={GuessNumber}/>
+    </myStack.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  backButton: {
-    position: 'absolute',
-    zIndex: 1,
-    bottom: 20,
-    left: 20,
-    padding: 8,
-    borderRadius: 8,
-  },
-});
-
-

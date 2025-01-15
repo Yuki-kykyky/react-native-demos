@@ -5,7 +5,7 @@ import { OperationButtonGroup } from "@/components/project-2-guess-number/compon
 import { useGuessNumber } from "@/hooks/useGuessNumber";
 import { useState } from "react";
 
-export const GameStart = ({setPage}: { setPage: (page: string) => void }) => {
+export const GameStart = () => {
 	const [input, setInput] = useState('');
 	const {setGoalNumber} = useGuessNumber() as { setGoalNumber: (goalNumber: string) => void };
 
@@ -22,7 +22,6 @@ export const GameStart = ({setPage}: { setPage: (page: string) => void }) => {
 			handleReset();
 		} else {
 			setGoalNumber(input);
-			setPage('in-game')
 		}
 	};
 	return (

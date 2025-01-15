@@ -3,18 +3,14 @@ import { projectInfos } from "@/constants/projectInfos";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
 import { useScreenSize } from "@/hooks/useScreenSize";
+import { useNavigation } from "@react-navigation/native";
 
-export const ProjectList = ({setPage}: { setPage: any }) => {
+export const ProjectList = () => {
 	const {isLandscape} = useScreenSize();
-
+	const navigation = useNavigation();
 	return (
 		<SafeAreaView style={{flex: 1}}>
-			<LinearGradient colors={[Colors.purple["400"], Colors.purple['100']]} style={styles.componentLayout}>
-				{/*<ImageBackground*/}
-				{/*	imageStyle={{opacity: 0.3}}*/}
-				{/*	source={require('@/assets/images/background/project-list.png')}*/}
-				{/*	style={styles.componentLayout}*/}
-				{/*>*/}
+			<LinearGradient colors={[Colors.purple["400"], Colors.purple['200']]} style={styles.componentLayout}>
 				<Text style={styles.headerText}>Project lists</Text>
 				<FlatList
 					key={isLandscape ? '2' : '1'}
@@ -27,39 +23,40 @@ export const ProjectList = ({setPage}: { setPage: any }) => {
 							maxWidth: isLandscape ? 500 : 400,
 							width: isLandscape ? '49%' : '100%'
 						}]}>
-						<View style={{
-							alignItems: 'center',
-							borderRightWidth: 2,
-							marginRight: 8,
-							paddingRight: 8,
-							borderColor: Colors.white
-						}}>
-							<Text style={{color: Colors.white}}>PROJECT {index + 1}</Text>
-						</View>
-						<View style={{
-							alignItems: 'center',
-							justifyContent: 'space-between',
-							flexDirection: 'row',
-							flex: 1
-						}}>
-							<View>
-								<Text style={{color: Colors.white}}>{item.date}</Text>
+							<View style={{
+								alignItems: 'center',
+								borderRightWidth: 2,
+								marginRight: 8,
+								paddingRight: 8,
+								borderColor: Colors.white
+							}}>
+								<Text style={{color: Colors.white}}>PROJECT {index + 1}</Text>
 							</View>
-							<View>
-								<Pressable onPress={() => setPage(item.page)} style={{
-									backgroundColor: Colors.purple['400'],
-									padding: 8,
-									borderRadius: 8,
-									width: 120,
-								}}>
-									<Text style={{color: Colors.white, textAlign: 'center'}}>{item.projectName}</Text>
-								</Pressable>
+							<View style={{
+								alignItems: 'center',
+								justifyContent: 'space-between',
+								flexDirection: 'row',
+								flex: 1
+							}}>
+								<View>
+									<Text style={{color: Colors.white}}>{item.date}</Text>
+								</View>
+								<View>
+									<Pressable
+										style={{
+											backgroundColor: Colors.purple['400'],
+											padding: 8,
+											borderRadius: 8,
+											width: 120,
+										}}
+										onPress={() => navigation.navigate(item.routeName)}>
+										<Text style={{color: Colors.white, textAlign: 'center'}}>{item.projectName}</Text>
+									</Pressable>
+								</View>
 							</View>
 						</View>
-					</View>
-				)}/>
-				{/*</ImageBackground>*/}
-		</LinearGradient>
+					)}/>
+			</LinearGradient>
 		</SafeAreaView>
 	)
 }

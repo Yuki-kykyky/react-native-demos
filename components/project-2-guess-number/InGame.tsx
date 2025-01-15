@@ -8,7 +8,7 @@ import { useGuessNumber } from "@/hooks/useGuessNumber";
 import { FontAwesome } from "@expo/vector-icons";
 import { useScreenSize } from "@/hooks/useScreenSize";
 
-export const InGame = ({setPage}: { setPage: (page: string) => void }) => {
+export const InGame = () => {
 	const { goalNumber, setGuessRound } = useGuessNumber() as { goalNumber: string; setGuessRound: (round: number) => void };
 	const getRandomNumber = ({min, max}: { min: string, max: string }) =>
 		String(Math.floor(Math.random() * (Number(max) - Number(min) + 1)) + Number(min));
@@ -58,10 +58,7 @@ export const InGame = ({setPage}: { setPage: (page: string) => void }) => {
 					/>
 					{bingo && (
 						<View style={styles.bingoHint}>
-							<Pressable onPress={() => {
-								setGuessRound(guessHistory.length);
-								setPage('game-end');
-							}}>
+							<Pressable onPress={() => {setGuessRound(guessHistory.length)}}>
 								<FontAwesome name="check-circle" size={32} color={Colors.green['400']}/>
 							</Pressable>
 						</View>)}
