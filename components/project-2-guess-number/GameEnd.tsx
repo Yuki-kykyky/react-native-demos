@@ -3,10 +3,11 @@ import React from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { GameTitle } from "@/components/project-2-guess-number/components/GameTitle";
 import { useGuessNumber } from "@/hooks/useGuessNumber";
+import { useNavigation } from "@react-navigation/native";
 
 export const GameEnd = () => {
 	const {goalNumber, guessRound} = useGuessNumber() as { goalNumber: string; guessRound: number };
-
+const navigation = useNavigation();
 	return (
 		<View>
 			<GameTitle title={'Bingo :)'}/>
@@ -25,7 +26,7 @@ export const GameEnd = () => {
 							<Text style={styles.summaryEmphasize}>{goalNumber}</Text>
 						</View>
 					</View>
-					<Pressable style={styles.button}>
+					<Pressable style={styles.button} onPress={()=>navigation.navigate('GameStart')}>
 						<Text style={{fontWeight: 'bold', color: Colors.pink['400'], fontSize: 16}}>start new game</Text>
 					</Pressable>
 				</View>

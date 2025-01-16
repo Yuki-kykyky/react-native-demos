@@ -21,7 +21,7 @@ android 手机端查看需通过 tunnel 方式启动，否则无法访问。启�
 
 ### 目标 2 - 路由调整
 
-使用`react-navigation` + `expo-router` 进行路由管理。
+使用`react-navigation` 或 `expo-router` 进行路由管理。
 
 - [ ] 常用api，样式调整 props 有哪些？
 - [ ] 如何实现携带参数的页面跳转？

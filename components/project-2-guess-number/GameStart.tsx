@@ -1,14 +1,15 @@
 import { GameTitle } from "@/components/project-2-guess-number/components/GameTitle";
-import { KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View } from "react-native";
+import { ImageBackground, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View } from "react-native";
 import { Colors } from "@/constants/Colors";
 import { OperationButtonGroup } from "@/components/project-2-guess-number/components/OperationButtonGroup";
 import { useGuessNumber } from "@/hooks/useGuessNumber";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 export const GameStart = () => {
 	const [input, setInput] = useState('');
 	const {setGoalNumber} = useGuessNumber() as { setGoalNumber: (goalNumber: string) => void };
-
+const navigation = useNavigation();
 	const handleReset = () => {
 		setInput('');
 	};
@@ -22,10 +23,15 @@ export const GameStart = () => {
 			handleReset();
 		} else {
 			setGoalNumber(input);
+			navigation.navigate('InGame');
 		}
 	};
+
 	return (
-		<View>
+		<View style={{flex: 1}}>
+			<ImageBackground
+				source={require('@/assets/images/background/guess-number.jpg')}
+				style={{paddingHorizontal: 20, flex: 1}}>
 			<GameTitle title={'Game Start'}/>
 			<View style={styles.container}>
 				<Text style={{fontWeight: 'bold', fontSize: 18}}>Let's Play a Game !</Text>
@@ -47,6 +53,7 @@ export const GameStart = () => {
 					themeColor={Colors.blue['400']}
 				/>
 			</View>
+			</ImageBackground>
 		</View>
 	)
 };
