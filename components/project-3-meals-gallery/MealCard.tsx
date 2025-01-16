@@ -1,21 +1,25 @@
 import { ImageBackground, Pressable, StyleSheet, Text, View } from "react-native";
 import { Colors } from "@/constants/Colors";
 import Category from "@/models/category";
+import { useNavigation } from "@react-navigation/native";
+import { getMealImage } from "@/constants/Images";
 
 export const MealCard = ({item}: { item: Category }) => {
+	const navigation = useNavigation();
 	return (
 		<ImageBackground
-			source={require('@/assets/images/black-white.jpg')}
-			imageStyle={{opacity: 0.3, borderRadius: 18}}
+			source={getMealImage(item.id)}
+			imageStyle={{opacity: 0.6, borderRadius: 18}}
 			style={[styles.cardContainer, {
-				backgroundColor: item.color,
 				marginTop: (item.id === 'c1' || item.id === 'c2') ? 0 : 24
 			}]}>
 			<View style={styles.subContainer}>
 				<Pressable
 					style={styles.pressableContainer}
 					android_ripple={{color: item.color}}
-					onPress={() => {console.log('Category Pressed: ', item)}}>
+					onPress={() => {
+						navigation.navigate('MealDetails', {category:item});
+					}}>
 					<Text style={styles.text}>{item.title}</Text>
 				</Pressable>
 			</View>
@@ -29,6 +33,7 @@ const styles = StyleSheet.create({
 		aspectRatio: 1,
 		borderRadius: 18,
 		elevation: 8,
+		backgroundColor: '#000',
 	},
 	subContainer: {
 		flex: 1,
