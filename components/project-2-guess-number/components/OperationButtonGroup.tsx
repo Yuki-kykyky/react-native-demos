@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Colors } from "@/constants/Colors";
+import { ColorGroups } from "@/constants/Colors";
 import React from "react";
 
 interface IOperationButtonGroupProps {
@@ -24,7 +24,7 @@ export const OperationButtonGroup = (
 	}: IOperationButtonGroupProps) => {
 	let buttonColor = themeColor;
 	if (disabled) {
-		buttonColor = Colors.grey['400'];
+		buttonColor = ColorGroups.grey['400'];
 	}
 	return (
 		<View style={{flexDirection: 'row', gap: 12}}>
@@ -58,11 +58,11 @@ const styles = StyleSheet.create({
 	},
 	operationLeftText: {
 		textAlign: 'center',
-		color: Colors.white,
+		color: ColorGroups.white,
 		fontWeight: 'bold'
 	},
 	operationRightButton: {
-		backgroundColor: Colors.white,
+		backgroundColor: ColorGroups.white,
 		borderWidth: 2,
 		padding: 8,
 		borderRadius: 8,

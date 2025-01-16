@@ -1,5 +1,5 @@
 import { ImageBackground, Pressable, StyleSheet, Text, View } from "react-native";
-import { Colors } from "@/constants/Colors";
+import { ColorGroups } from "@/constants/Colors";
 import Category from "@/models/category";
 import { useNavigation } from "@react-navigation/native";
 import { getMealImage } from "@/constants/Images";
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 		borderRadius: 18,
 	},
 	text: {
-		color: Colors.white,
+		color: ColorGroups.white,
 		fontSize: 18,
 		fontWeight: 'bold'
 	}

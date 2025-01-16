@@ -1,4 +1,4 @@
-import { Colors } from "@/constants/Colors";
+import { ColorGroups } from "@/constants/Colors";
 import React from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { GameTitle } from "@/components/project-2-guess-number/components/GameTitle";
@@ -18,7 +18,7 @@ const navigation = useNavigation();
 					<View style={{}}>
 						<Text style={{textAlign: 'center', fontWeight: '500'}}>It takes
 							system <Text
-								style={{fontSize: 24, fontWeight: 'bold', color: Colors.pink['400']}}>{guessRound}</Text> times
+								style={{fontSize: 24, fontWeight: 'bold', color: ColorGroups.pink['400']}}>{guessRound}</Text> times
 							to guess your number.
 						</Text>
 						<View style={{flexDirection: 'row', alignItems: 'baseline', justifyContent: 'center'}}>
@@ -27,7 +27,7 @@ const navigation = useNavigation();
 						</View>
 					</View>
 					<Pressable style={styles.button} onPress={()=>navigation.navigate('GameStart')}>
-						<Text style={{fontWeight: 'bold', color: Colors.pink['400'], fontSize: 16}}>start new game</Text>
+						<Text style={{fontWeight: 'bold', color: ColorGroups.pink['400'], fontSize: 16}}>start new game</Text>
 					</Pressable>
 				</View>
 			</View>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 		height: 300,
 		borderRadius: 150,
 		borderWidth: 4,
-		borderColor: Colors.pink['200'],
+		borderColor: ColorGroups.pink['200'],
 		elevation: 8
 	},
 	summaryContainer: {
@@ -62,16 +62,16 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		fontSize: 21,
 		textAlign: 'center',
-		color: Colors.pink['400'],
+		color: ColorGroups.pink['400'],
 		borderBottomWidth: 2,
 		paddingHorizontal: 12,
 		paddingBottom: 4,
-		borderColor: Colors.pink['400'],
+		borderColor: ColorGroups.pink['400'],
 	},
 	summaryEmphasize: {
 		fontSize: 24,
 		fontWeight: 'bold',
-		color: Colors.pink['400'],
+		color: ColorGroups.pink['400'],
 		marginLeft: 8,
 		paddingHorizontal: 4,
 		borderBottomWidth: 1
@@ -79,8 +79,8 @@ const styles = StyleSheet.create({
 	button: {
 		padding: 10,
 		borderRadius: 5,
-		backgroundColor: Colors.pink['100'],
+		backgroundColor: ColorGroups.pink['100'],
 		borderWidth: 3,
-		borderColor: Colors.pink['200']
+		borderColor: ColorGroups.pink['200']
 	}
 });

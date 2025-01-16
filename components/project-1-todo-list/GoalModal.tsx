@@ -1,6 +1,6 @@
 import { Image, ImageBackground, Modal, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { useState } from "react";
-import { Colors } from "@/constants/Colors";
+import { ColorGroups } from "@/constants/Colors";
 
 export const GoalModal = ({
 	isVisible,
@@ -30,7 +30,7 @@ export const GoalModal = ({
 					style={{
 						width: 80,
 						height: 80,
-						tintColor: Colors.green['400']
+						tintColor: ColorGroups.green['400']
 				}}
 					source={require('@/assets/images/react-logo.png')}/>
 				<TextInput placeholder={'something need to be done'}
@@ -39,9 +39,9 @@ export const GoalModal = ({
 									 style={styles.textInput}/>
 				<View style={{flexDirection: 'row', gap: 16}}>
 					<Pressable
-						style={{...styles.ModalButton, backgroundColor: Colors.green['400']}}
+						style={{...styles.ModalButton, backgroundColor: ColorGroups.green['400']}}
 						onPress={handleClose}>
-						<Text style={{color: Colors.white, fontWeight:'bold'}}>Close</Text>
+						<Text style={{color: ColorGroups.white, fontWeight:'bold'}}>Close</Text>
 					</Pressable>
 					<Pressable
 						style={{...styles.ModalButton, backgroundColor: '#fff'}}
@@ -49,7 +49,7 @@ export const GoalModal = ({
 							handleClose();
 							handleAddGoal(inputValue);
 						}}>
-						<Text style={{color: Colors.green['400'], fontWeight:'bold'}}>Add</Text>
+						<Text style={{color: ColorGroups.green['400'], fontWeight:'bold'}}>Add</Text>
 					</Pressable>
 				</View>
 			</ImageBackground>
@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	textInput: {
-		borderColor: Colors.green['400'],
-		backgroundColor: Colors.green['100'],
+		borderColor: ColorGroups.green['400'],
+		backgroundColor: ColorGroups.green['100'],
 		borderWidth: 3,
 		borderRadius: 16,
 		width: '100%',

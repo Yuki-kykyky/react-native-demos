@@ -1,6 +1,6 @@
 import { GameTitle } from "@/components/project-2-guess-number/components/GameTitle";
 import { ImageBackground, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View } from "react-native";
-import { Colors } from "@/constants/Colors";
+import { ColorGroups } from "@/constants/Colors";
 import { OperationButtonGroup } from "@/components/project-2-guess-number/components/OperationButtonGroup";
 import { useGuessNumber } from "@/hooks/useGuessNumber";
 import { useState } from "react";
@@ -50,7 +50,7 @@ const navigation = useNavigation();
 					textLeft={'Reset'}
 					textRight={'Submit'}
 					handleRight={handleSubmit}
-					themeColor={Colors.blue['400']}
+					themeColor={ColorGroups.blue['400']}
 				/>
 			</View>
 			</ImageBackground>
@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
 	textInput: {
 		width: 50,
 		borderBottomWidth: 2,
-		borderBottomColor: Colors.blue['400'],
-		color: Colors.blue['400'],
+		borderBottomColor: ColorGroups.blue['400'],
+		color: ColorGroups.blue['400'],
 		fontSize: 32,
 		fontWeight: 'bold',
 		textAlign: 'center',

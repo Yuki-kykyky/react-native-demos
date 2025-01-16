@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { Colors } from "@/constants/Colors";
+import { ColorGroups } from "@/constants/Colors";
 
 export const GameTitle = ({title}: { title: string }) => {
 	return (
@@ -12,14 +12,14 @@ export const GameTitle = ({title}: { title: string }) => {
 const styles = StyleSheet.create({
 	titleComponent: {
 		backgroundColor: '#ffffffdd',
-		borderColor: Colors.white,
+		borderColor: ColorGroups.white,
 		padding: 8,
 		marginVertical: 20,
 		borderWidth: 4,
 		borderRadius: 24
 	},
 	titleText: {
-		color: Colors.blue['400'],
+		color: ColorGroups.blue['400'],
 		textAlign: 'center',
 		fontSize: 21,
 		fontWeight: 'bold'

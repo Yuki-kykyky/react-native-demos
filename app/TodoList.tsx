@@ -2,15 +2,15 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomePage from "@/app/HomePage";
 import TodoListPage from "@/components/project-1-todo-list/TodoList";
 import { Ionicons } from "@expo/vector-icons";
-import { Colors } from "@/constants/Colors";
+import { ColorGroups } from "@/constants/Colors";
 
 const Tab = createBottomTabNavigator()
 
 export const TodoList = () => {
 	return (
 		<Tab.Navigator initialRouteName={'Todo'} screenOptions={{
-			tabBarActiveTintColor: Colors.purple['400'],
-			tabBarInactiveTintColor: Colors.grey['400'],
+			tabBarActiveTintColor: ColorGroups.purple['400'],
+			tabBarInactiveTintColor: ColorGroups.grey['400'],
 			tabBarStyle: {
 				backgroundColor: '#f0f0f0',
 				height: 60,

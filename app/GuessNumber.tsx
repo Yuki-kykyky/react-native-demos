@@ -2,7 +2,7 @@ import { GameStart } from "@/components/project-2-guess-number/GameStart";
 import { InGame } from "@/components/project-2-guess-number/InGame";
 import { GameEnd } from "@/components/project-2-guess-number/GameEnd";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Colors } from "@/constants/Colors";
+import { ColorGroups } from "@/constants/Colors";
 
 const Stack = createStackNavigator();
 
@@ -26,7 +26,7 @@ export const GuessNumber = () => {
 					usually only show a back arrow, not a title.
 					*/
 					headerBackTitle: 'Get Back',
-					headerBackTitleStyle: {fontWeight: 'bold', fontSize: 16, color: Colors.pink['200']},
+					headerBackTitleStyle: {fontWeight: 'bold', fontSize: 16, color: ColorGroups.pink['200']},
 				}}
 			/>
 			<Stack.Screen name="GameEnd" component={GameEnd}/>

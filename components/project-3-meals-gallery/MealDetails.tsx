@@ -1,6 +1,8 @@
 import { Image, Text, View } from "react-native";
 import Meal from "@/models/meal";
 import { MEALS } from "@/data/dummy-data";
+import { AffordabilityColor, ComplexityColor } from "@/constants/Colors";
+import { EAffordability, EComplexity } from "@/constants/Types";
 
 export const MealDetails = ({route}) => {
 	const {category} = route.params;
@@ -46,7 +48,7 @@ export const MealDetails = ({route}) => {
 					<View style={{flexDirection: 'row', gap: 8}}>
 						<Text
 							style={{
-								backgroundColor: 'white',
+								backgroundColor: ComplexityColor[meal.complexity as EComplexity],
 								paddingHorizontal: 12,
 								paddingVertical: 4,
 								borderRadius: 18,
@@ -55,7 +57,7 @@ export const MealDetails = ({route}) => {
 							}}>{meal.complexity}</Text>
 						<Text
 							style={{
-								backgroundColor: 'white',
+								backgroundColor: AffordabilityColor[meal.affordability as EAffordability],
 								paddingHorizontal: 12,
 								paddingVertical: 4,
 								borderRadius: 18,

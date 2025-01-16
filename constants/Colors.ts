@@ -1,4 +1,6 @@
-export const Colors = {
+import { EAffordability, EComplexity } from "@/constants/Types";
+
+export const ColorGroups = {
   white: '#ffffff',
   grey: {
     100: '#f5f5f5',
@@ -35,3 +37,15 @@ export const Colors = {
     800: '#7a1e4b'
   }
 };
+
+export const ComplexityColor = {
+  [EComplexity.SIMPLE]: ColorGroups.green['100'],
+  [EComplexity.CHALLENGING]: ColorGroups.red['100'],
+  [EComplexity.HARD]: ColorGroups.red['200'],
+};
+
+export const AffordabilityColor = {
+  [EAffordability.AFFORDABLE]: ColorGroups.green['100'],
+  [EAffordability.PRICEY]: ColorGroups.red['100'],
+  [EAffordability.LUXURIOUS]: ColorGroups.red['200'],
+}

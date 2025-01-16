@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text } from "react-native";
-import { Colors } from "@/constants/Colors";
+import { ColorGroups } from "@/constants/Colors";
 
 export const OperationSection = (
 	{handleOpen}: { handleOpen: () => void }) => {
@@ -15,15 +15,15 @@ const styles = StyleSheet.create({
 	addButton: {
 		marginTop: 40,
 		borderRadius: 8,
-		borderColor: Colors.green['400'],
+		borderColor: ColorGroups.green['400'],
 		borderWidth: 2,
 		padding: 16,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: Colors.green['100'],
+		backgroundColor: ColorGroups.green['100'],
 	},
 	addText:{
-		color: Colors.green['400'],
+		color: ColorGroups.green['400'],
 		fontWeight: 'bold',
 		fontSize: 18
 	}

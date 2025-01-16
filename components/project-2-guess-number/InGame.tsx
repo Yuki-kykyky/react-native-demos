@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { GameTitle } from "@/components/project-2-guess-number/components/GameTitle";
-import { Colors } from "@/constants/Colors";
+import { ColorGroups } from "@/constants/Colors";
 import { useState } from "react";
 import { OperationButtonGroup } from "@/components/project-2-guess-number/components/OperationButtonGroup";
 import { GuessHistory } from "@/components/project-2-guess-number/components/GuessHistory";
@@ -55,7 +55,7 @@ export const InGame = () => {
 						textLeft={'too low'}
 						textRight={'too high'}
 						handleRight={() => handleGuess(false)}
-						themeColor={Colors.blue['400']}
+						themeColor={ColorGroups.blue['400']}
 						slot={isLandscape && <Text style={{fontSize: 24}}>{guessHistory[0]}</Text>}
 					/>
 					{bingo && (
@@ -64,7 +64,7 @@ export const InGame = () => {
 								setGuessRound(guessHistory.length);
 								navigation.navigate('GameEnd');
 							}}>
-								<FontAwesome name="check-circle" size={32} color={Colors.green['400']}/>
+								<FontAwesome name="check-circle" size={32} color={ColorGroups.green['400']}/>
 							</Pressable>
 						</View>)}
 				</View>

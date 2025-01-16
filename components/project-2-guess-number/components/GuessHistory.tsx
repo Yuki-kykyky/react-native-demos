@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { Colors } from "@/constants/Colors";
+import { ColorGroups } from "@/constants/Colors";
 import { useScreenSize } from "@/hooks/useScreenSize";
 
 export const GuessHistory = ({guessHistory}: { guessHistory: string[] }) => {
@@ -11,16 +11,16 @@ export const GuessHistory = ({guessHistory}: { guessHistory: string[] }) => {
 				{guessHistory.map((guess, index) => (
 					<View key={index} style={styles.guessHistoryItem}>
 						<View style={{...styles.guessHistoryIndex, justifyContent: 'flex-start'}}>
-							<Text style={{color: Colors.pink['800'], fontWeight: 'bold'}}>Round </Text>
+							<Text style={{color: ColorGroups.pink['800'], fontWeight: 'bold'}}>Round </Text>
 							<Text style={{
 								...styles.guessItemNumber,
 								borderRightWidth: 2,
 								paddingRight: 8,
-								borderRightColor: Colors.pink['400']
+								borderRightColor: ColorGroups.pink['400']
 							}}>{guessHistory.length - index}</Text>
 						</View>
 						<View style={styles.guessHistoryContent}>
-							<Text style={{color: Colors.pink['800']}}>Guess Number: </Text>
+							<Text style={{color: ColorGroups.pink['800']}}>Guess Number: </Text>
 							<Text style={styles.guessItemNumber}>{guess}</Text>
 						</View>
 					</View>
@@ -47,14 +47,14 @@ const styles = StyleSheet.create({
 		marginBottom: 12,
 		paddingVertical: 8,
 		paddingHorizontal: 36,
-		borderBottomColor: Colors.pink['400'],
-		color: Colors.pink['800'],
+		borderBottomColor: ColorGroups.pink['400'],
+		color: ColorGroups.pink['800'],
 		borderBottomWidth: 2
 	},
 	guessHistoryItem: {
 		flexDirection: 'row',
-		backgroundColor: Colors.pink['50'],
-		borderColor: Colors.pink['400'],
+		backgroundColor: ColorGroups.pink['50'],
+		borderColor: ColorGroups.pink['400'],
 		borderWidth: 2,
 		borderRadius: 12,
 		marginBottom: 12,
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 	},
 	guessItemNumber: {
 		width: 28,
-		color: Colors.pink['800'],
+		color: ColorGroups.pink['800'],
 		fontWeight: 'bold',
 		textAlign: 'right',
 	}
