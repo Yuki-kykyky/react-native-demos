@@ -1,42 +1,46 @@
-import { ImageBackground, StyleSheet } from "react-native";
-import { useState } from "react";
-import { GoalModal } from "@/components/project-1-todo-list/GoalModal";
-import { OperationSection } from "@/components/project-1-todo-list/OperationSection";
-import { GoalListSection } from "@/components/project-1-todo-list/GoalListSection";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import HomePage from "@/app/HomePage";
+import TodoListPage from "@/components/project-1-todo-list/TodoList";
+import { Ionicons } from "@expo/vector-icons";
+import { Colors } from "@/constants/Colors";
+
+const Tab = createBottomTabNavigator()
 
 export const TodoList = () => {
-	const [isVisible, setIsVisible] = useState(false);
-	const [goalList, setGoalList] = useState<
-		{ id: string; value: string }[]>([]);
-	const handleAddGoal = (goal: string) => {
-		setGoalList([...goalList, {id: Math.random().toString(), value: goal}]);
-	};
-	const handleOpen = () => setIsVisible(true);
-	const handleRemoveGoal = (id: string) => {
-		setGoalList(goalList.filter((goal) => goal.id !== id));
-	};
-
 	return (
-		<ImageBackground
-			imageStyle={{opacity: 0.8}}
-			source={require('@/assets/images/background/todo-list.jpg')}
-			style={styles.componentLayout}
-		>
-			<GoalModal
-				isVisible={isVisible}
-				setIsVisible={setIsVisible}
-				handleAddGoal={handleAddGoal}/>
-			<OperationSection handleOpen={handleOpen}/>
-			<GoalListSection goalList={goalList} handleRemoveGoal={handleRemoveGoal}/>
-		</ImageBackground>
+		<Tab.Navigator initialRouteName={'Todo'} screenOptions={{
+			tabBarActiveTintColor: Colors.purple['400'],
+			tabBarInactiveTintColor: Colors.grey['400'],
+			tabBarStyle: {
+				backgroundColor: '#f0f0f0',
+				height: 60,
+				paddingTop: 5,
+				alignItems: 'center',
+				justifyContent: 'center',
+			},
+			tabBarLabelStyle: {fontSize: 12},
+			headerShown: false
+		}}>
+			<Tab.Screen
+				name="Todo"
+				component={TodoListPage}
+				options={{
+					tabBarLabel: 'Todo List',
+					tabBarIcon: ({color, size}) => (
+						<Ionicons name="list" size={size} color={color}/>
+					)
+				}}/>
+			<Tab.Screen
+				name="Home"
+				component={HomePage}
+				options={{
+					tabBarLabel: 'Home',
+					tabBarIcon: ({color, size}) => (
+						<Ionicons name="home" size={size} color={color}/>
+					)
+				}}
+			/>
+		</Tab.Navigator>
 	)
 }
-
 export default TodoList;
-
-const styles = StyleSheet.create({
-	componentLayout: {
-		padding: 20,
-		flex: 1,
-	}
-});

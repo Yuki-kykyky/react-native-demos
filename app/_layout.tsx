@@ -1,12 +1,12 @@
 import 'react-native-reanimated';
 import { ProjectList } from "./ProjectList";
-import { TodoList } from "./TodoList";
 import { GuessNumber } from "./GuessNumber";
 import { HomePage } from "@/app/HomePage";
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
 import { ImageBackground } from "react-native";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import { Ionicons } from "@expo/vector-icons";
+import TodoList from "@/app/TodoList";
 
 const Drawer = createDrawerNavigator()
 const CustomDrawer = (props: any) => {
