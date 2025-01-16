@@ -7,6 +7,7 @@ import { ImageBackground } from "react-native";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import { Ionicons } from "@expo/vector-icons";
 import TodoList from "@/app/TodoList";
+import MealsGallery from "@/app/MealsGallery";
 
 const Drawer = createDrawerNavigator()
 const CustomDrawer = (props: any) => {
@@ -76,6 +77,15 @@ export default function RootLayout() {
           title: 'Guess Number',
           drawerLabel: 'Guess Number',
           drawerIcon: (props) => (<Ionicons name="repeat" size={props.size} color={props.color}/>),
+        }}
+      />
+      <Drawer.Screen
+        name="ProjectThree"
+        component={MealsGallery}
+        options={{
+          title: 'Meals Gallery',
+          drawerLabel: 'Meals Gallery',
+          drawerIcon: (props) => (<Ionicons name="fast-food" size={props.size} color={props.color}/>),
         }}
       />
     </Drawer.Navigator>
