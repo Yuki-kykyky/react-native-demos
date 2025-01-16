@@ -1,6 +1,7 @@
-import { FlatList, ImageBackground, Pressable, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { CATEGORIES } from "@/data/dummy-data";
-import { Colors } from "@/constants/Colors";
+import { MealCard } from "@/components/project-3-meals-gallery/MealCard";
+
 
 export const MealsGallery = () => {
 
@@ -11,40 +12,7 @@ export const MealsGallery = () => {
 				columnWrapperStyle={{justifyContent: 'space-between', gap: 24}}
 				data={CATEGORIES}
 				keyExtractor={(item) => item.id}
-				renderItem={(category) => (
-					<ImageBackground
-						source={require('@/assets/images/black-white.jpg')}
-						imageStyle={{opacity: 0.3, borderRadius: 18}}
-						style={{
-							backgroundColor: category.item.color,
-							flex: 1,
-							marginTop: 24,
-							aspectRatio: 1,
-							borderRadius: 18,
-							elevation: 8
-						}}>
-						<View style={{
-							flex: 1,
-							borderRadius: 18,
-							overflow: 'hidden'
-						}}>
-							<Pressable
-								style={{
-									flex: 1,
-									width: '100%',
-									justifyContent: 'center',
-									alignItems: 'center',
-									borderRadius: 18,
-								}}
-								android_ripple={{color: category.item.color}}
-								onPress={() => {
-									console.log('Category Pressed: ', category.item)
-								}}>
-								<Text style={{color: Colors.white, fontSize: 18, fontWeight: 'bold'}}>{category.item.title}</Text>
-							</Pressable>
-						</View>
-					</ImageBackground>
-				)}
+				renderItem={(category) => <MealCard item={category.item}/>}
 			/>
 		</View>
 	)
