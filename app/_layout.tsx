@@ -5,9 +5,10 @@ import { HomePage } from "@/app/HomePage";
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
 import { ImageBackground } from "react-native";
 import { useScreenSize } from "@/hooks/useScreenSize";
-import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import TodoList from "@/app/TodoList";
 import MealsGallery from "@/app/MealsGallery";
+import { BibiAccounts } from "@/app/BibiAcounts";
 
 const Drawer = createDrawerNavigator()
 const CustomDrawer = (props: any) => {
@@ -86,6 +87,15 @@ export default function RootLayout() {
           title: 'Meals Gallery',
           drawerLabel: 'Meals Gallery',
           drawerIcon: (props) => (<Ionicons name="fast-food" size={props.size} color={props.color}/>),
+        }}
+      />
+      <Drawer.Screen
+        name="ProjectFour"
+        component={BibiAccounts}
+        options={{
+          title: 'Bibi Accounts',
+          drawerLabel: 'Bibi Accounts',
+          drawerIcon: (props) => (<FontAwesome5 name="money-bill" size={props.size} color={props.color}/>),
         }}
       />
     </Drawer.Navigator>
