@@ -1,9 +1,17 @@
-import { View,Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
-export const AccountList = () => {
+export const AccountList = ({route}: { route: any }) => {
 	return (
-		<View>
-			<Text>Account List</Text>
+		<View style={styles.container}>
+			<Text>{route.params.type}</Text>
 		</View>
 	)
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		alignItems: 'center',
+		backgroundColor: '#638ed5',
+	}
+});

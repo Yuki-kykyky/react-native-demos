@@ -93,7 +93,7 @@ export default function RootLayout() {
         name="ProjectFour"
         component={BibiAccounts}
         options={{
-          title: 'Bibi Accounts',
+          headerShown: false,
           drawerLabel: 'Bibi Accounts',
           drawerIcon: (props) => (<FontAwesome5 name="money-bill" size={props.size} color={props.color}/>),
         }}
