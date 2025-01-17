@@ -1,9 +1,10 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { BILLS } from "@/data/bills";
 import { getDate, sortByDateDesc } from "@/utils/date";
+import { useNavigation } from "@react-navigation/native";
 
 export const AccountList = ({route}: { route: any }) => {
-
+	const navigation = useNavigation();
 	return (
 		<View style={styles.container}>
 			<View style={styles.sumContainer}>
@@ -14,14 +15,17 @@ export const AccountList = ({route}: { route: any }) => {
 					<FlatList
 						style={{width: '100%'}}
 						data={sortByDateDesc(BILLS)}
-						renderItem={({item}) =>
-							(<View style={styles.billItem}>
-								<View style={styles.itemFirstRow}>
-									<Text style={{fontWeight: 'bold'}}>{item.title}</Text>
-									<Text>$ {item.amount.toFixed(2)}</Text>
+						renderItem={({item}) => (
+							<Pressable onPress={() => navigation.navigate('AccountModify', {action: 'edit'})}>
+								<View style={styles.billItem}>
+									<View style={styles.itemFirstRow}>
+										<Text style={{fontWeight: 'bold'}}>{item.title}</Text>
+										<Text>$ {item.amount.toFixed(2)}</Text>
+									</View>
+									<Text>{getDate(item.date)}</Text>
 								</View>
-								<Text>{getDate(item.date)}</Text>
-							</View>)}/>) : (
+							</Pressable>
+						)}/>) : (
 					<View>
 						<Text>No bills</Text>
 					</View>

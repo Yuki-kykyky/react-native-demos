@@ -39,9 +39,7 @@ export const BibiAccounts = () => {
 			),
 			headerRight: ({tintColor}) => (
 				<Pressable
-					onPress={() => {
-						console.log('Add new bill')
-					}}>
+					onPress={() => navigation.navigate('AccountModify',{action: 'add'})}>
 					<MaterialIcons
 						style={{paddingRight: 16}}
 						name="add-circle-outline" size={24} color={tintColor}/>
